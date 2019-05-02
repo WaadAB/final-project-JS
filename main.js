@@ -1,5 +1,15 @@
 $(document).ready(function () {
     var listItem=[];
+   /* function renderItems() {
+        if (localStorage.getItem('listItem') !== null) {
+            listItem = JSON.parse(localStorage.getItem('listItem'));
+            listItem.forEach(function (item) {
+              $("<li></li>").text(item).appendTo($('#list'));
+              $('#list').appendTo('.listContainer')
+            })
+            }
+    }*/
+   // renderItems();
    
     $("#submit").on("click", function (event) {
         event.preventDefault();
@@ -47,7 +57,7 @@ $(document).ready(function () {
                     $newLikeBtn = $('<button></button>').text("Add to list").addClass('like');
                     $newLikeBtn.on('click', function (event) {
                         var item = $(this).parent().children()[1].innerText;
-                       // localStorage.setItem('listItem', JSON.stringify(item));
+                        localStorage.setItem('listItem', JSON.stringify(item));
                         listItem.push(item);
                         $("<li></li>").text(item).appendTo($('#list'));
                     });
@@ -68,13 +78,5 @@ $(document).ready(function () {
 
 
     });
-    function renderItems() {
-        if (localStorage.getItem('listItem') !== null) {
-            listItem = JSON.parse(localStorage.getItem('listItem'));
-            listItem.forEach(function (item) {
-              $("<li></li>").text(item).appendTo($('#list'));
-            })
-            }
-            else console.log("wwwwwwwww");
-    }
+    
 })
