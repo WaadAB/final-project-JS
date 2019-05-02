@@ -1,15 +1,15 @@
 $(document).ready(function () {
     var listItem=[];
-   /* function renderItems() {
+    function renderItems() {
         if (localStorage.getItem('listItem') !== null) {
             listItem = JSON.parse(localStorage.getItem('listItem'));
             listItem.forEach(function (item) {
               $("<li></li>").text(item).appendTo($('#list'));
-              $('#list').appendTo('.listContainer')
+              $('#list').appendTo('.listContainer');
             })
             }
-    }*/
-   // renderItems();
+    }
+    renderItems();
    
     $("#submit").on("click", function (event) {
         event.preventDefault();
@@ -57,8 +57,9 @@ $(document).ready(function () {
                     $newLikeBtn = $('<button></button>').text("Add to list").addClass('like');
                     $newLikeBtn.on('click', function (event) {
                         var item = $(this).parent().children()[1].innerText;
-                        localStorage.setItem('listItem', JSON.stringify(item));
                         listItem.push(item);
+                        localStorage.setItem('listItem', JSON.stringify(listItem));
+                   
                         $("<li></li>").text(item).appendTo($('#list'));
                     });
                     $book.appendTo($('.result'));
